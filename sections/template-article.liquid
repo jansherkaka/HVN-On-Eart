@@ -5,12 +5,12 @@
   {% for block in section.blocks %}
     {% case block.type %}
       {% when 'article_title' %}
-
         <div class="flex items-center justify-center">
           <div class="max-w-7xl text-center">
             <h1 class="text-4xl md:text-6xl font-medium" itemprop="headline">{{ article.title }}</h1>
           </div>
         </div>
+
       {% when 'article_author' %}
         <div
           class="flex items-cnter justify-center "
@@ -22,6 +22,8 @@
             {% endif %}
           </div>
         </div>
+
+
       {% when 'article_publish_date' %}
         <div class="flex items-cneter justify-center">
           <div class="max-w-7xl text-center">
@@ -53,6 +55,8 @@
       {% endcase %}
     {% endfor %}
   </article>
+
+
   {% if blog.comments_enabled? %}
     <div id="comments" class="my-7">
       {% if article.comments_count > 0 %}
@@ -82,7 +86,7 @@
       {% form 'new_comment'
         , article %}
         <div class=" max-w-4xl flex-1 items-center justify-center mx-auto px-4">
-
+          {% comment %}/// For Form Error Condition  ///{% endcomment %}
           {% if form.errors %}
             <div class="border p-5">
               <div class=" flex flex-row items-center w-full my-3">
@@ -100,7 +104,7 @@
               <div class="text-sm font-medium ml-3">Comment is succefully posted</div>
             </div>
           {% endif %}
-
+            {% comment %} Form  {% endcomment %}
           <div class="md:flex mb-3 px-1">
             <div class="px-3 md:w-1/2">
               <label for="comment_authore" class="mb-2 text-grey-700 font-medium uppercase text-sm">Name</label>
