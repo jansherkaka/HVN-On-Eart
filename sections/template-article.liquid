@@ -1,10 +1,190 @@
-<h1>{{ article.title }}</h1>
-<small>{{ article.author }}</small>
-<time datetime="{{ article.published_at |  date: '%Y-%m-%d' }}">{{ article.published_at | date: '%Y-%m-%d' }}</time>
+<article
+  class="my-7"
+  itemscope
+  itemtype="http://schema.org/BlogPosting">
+  {% for block in section.blocks %}
+    {% case block.type %}
+      {% when 'article_title' %}
 
-<img
-  src="{{ article.image |  img_url: 'large' }}"
-  loading="lazy"
-  alt="{{ article.image.alt }}">
+        <div class="flex items-center justify-center">
+          <div class="max-w-7xl text-center">
+            <h1 class="text-4xl md:text-6xl font-medium" itemprop="heading">{{ article.title }}</h1>
+          </div>
+        </div>
+      {% when 'article_author' %}
+        <div
+          class="flex items-cnter justify-center "
+          itemscope
+          itemtype="http://schema.org/person">
+          <div class="max-w-7xl text-center">
+            {% if section.settings.enable_author %}
+              <small itemprop="author">{{ article.author }}</small>
+            {% endif %}
+          </div>
+        </div>
+      {% when 'article_publish_date' %}
+        <div class="flex items-cneter justify-center">
+          <div class="max-w-7xl text-center">
+            {% if section.settings.enable_publish_date %}
+              <time itemprop="datePublished dateCreated" datetime="{{ article.published_at |  date: '%Y-%m-%d' }}">{{ article.published_at | date: format: "on_date" }}</time>
+            {% endif %}
+          </div>
+        </div>
+      {% when 'featured_img' %}
+        {% if article.image != blank %}
+          <div itemprop="thumbnail" class="max-w-7xl overflow-hidden bg-blue-100 rounded-lg mx-2 md:mx-auto my-5">
+            <img
+              class="w-full object-cover object-center h-96 md:h-96"
+              src="{{ article.image |  img_url: 'large' }}"
+              loading="lazy"
+              alt="{{ article.image.alt }}">
+          </div>
+        {% else %}
+          {% assign palaceholder_image = "lifestyle-1" %}
+          {{ palaceholder_image | placeholder_svg_tag: "w-full object-cover object-center h-96 md:h-96" }}
+        {% endif %}
+      {% when 'article_content' %}
+        <div class="flex justify-center items-center">
+          <div class="max-w-4xl">
+            {{ article.content }}
+          </div>
+        </div>
+    {% else %}
+      {% endcase %}
+    {% endfor %}
+  </article>
+  {% if blog.comments_enabled? %}
+    <div id="comments" class="my-7">
+      {% if article.comments_count > 0 %}
+        <div class="flex-1 justify-center items-center max-w-4xl mx-auto px-4">
+          <h1 class="text-lg mb-4 font-medium">See what people are saying</h1>
 
-<div>{{ article.content }}</div>
+          {% paginate article.comments by 5 %}
+            {% for comment in article.comments %}
+              <div class="flex-1 border my-4 px-4 py-2 sm:py-4 sm:px-6  leading-relaxed">
+                <span class="comment_author">{{ comment.author }}</span>
+                <span class="text-xs text-gray-400">{{ comment.created_at | date: format: 'default' }}</span>
+                <p class="text-xs">{{ comment.content }}</p>
+              </div>
+            {% endfor %}
+            {% if paginate.pages > 1 %}
+              {{ paginate | default_pagination }}
+            {% endif %}
+          {% endpaginate %}
+
+        </div>
+      {% else %}
+        there is no comments
+      {% endif %}
+    </div>
+
+    <div id="comment_form" class="mb-7">
+      {% form 'new_comment'
+        , article %}
+        <div class=" max-w-4xl flex-1 items-center justify-center mx-auto px-4">
+
+          {% if form.errors %}
+            <div class="border p-5">
+              <div class=" flex flex-row items-center w-full my-3">
+                <div class="text-red-500">
+                  {% render "icon_failed" %}
+                </div>
+                <div class=" ml-3 text-sm font-medium">oh no! your comment is not posted</div>
+              </div>
+            </div>
+          {% elsif form.posted_successfully? %}
+            <div class="flex flex-row items-center w-full my-3">
+              <div class="text-green-500">
+                {% render 'icon_success' %}
+              </div>
+              <div class="text-sm font-medium ml-3">Comment is succefully posted</div>
+            </div>
+          {% endif %}
+
+          <div class="md:flex mb-3 px-1">
+            <div class="px-3 md:w-1/2">
+              <label for="comment_authore" class="mb-2 text-grey-700 font-medium uppercase text-sm">Name</label>
+              <input
+                type="text"
+                name="comment[author]"
+                id="comment_author"
+                class="border w-full px-4 text-grey-700 py-3 mb-3 focus:outline-none "
+                placeholder="joe dow"
+                required>
+            </div>
+            <div class="px-3 md:w-1/2">
+              <label for="coment_email " class="mb-2 text-grey-700 font-medium  uppercase text-sm">Email</label>
+              <input
+                type="email"
+                name="comment[email]"
+                class="w-full text-grey-700 px-4 py-3 mb-3 focus:outline-none border"
+                placeholder="Joe@.com">
+            </div>
+          </div>
+          <div class="px-1 md:flex mb-3">
+            <div class="md:w-full px-3 ">
+              <label for="comment_content" class="text-grey-700 font-medium uppercase mb-2 text-sm">Comment</label>
+              <textarea
+                name="comment[body]"
+                id="comment-content"
+                class="resize-none  w-full text-grey-700 h-20 py- px-3 focus:outline-none border"
+                required></textarea>
+            </div>
+          </div>
+          <div class="px-1 md:flex mb-3">
+            <div class="md:w-full px-3">
+              <input
+                type="submit"
+                value="Post Comment"
+                class="w-full px-4 py-2 border text-base bg-gray-900 text-white hover:bg-gray-500 font-medium cursor-pointer ">
+            </div>
+          </div>
+        </div>
+      {% endform %}
+    </div>
+
+  {% endif %}
+  {% schema %}
+    {
+      "name": "Template Article ",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "enable_author",
+          "default": true,
+          "label": "Display Author Name"
+        }, {
+          "type": "checkbox",
+          "id": "enable_publish_date",
+          "default": true,
+          "label": "Display Publish Date"
+        }
+      ],
+      "blocks": [
+        {
+          "type": "article_title",
+          "name": "Title",
+          "limit": 1
+        },
+        {
+          "type": "article_author",
+          "name": "Author",
+          "limit": 1
+        },
+        {
+          "type": "article_publish_date",
+          "name": "Publish Date",
+          "limit": 1
+        },
+        {
+          "type": "featured_img",
+          "name": "thumbnail",
+          "limit": 1
+        }, {
+          "type": "article_content",
+          "name": "content",
+          "limit": 1
+        }
+      ]
+    }
+  {% endschema %}
