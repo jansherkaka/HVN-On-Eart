@@ -1,0 +1,33 @@
+<div class="py-8">
+  {% paginate collection.products by section.settings.number_of_pagination_per_page %}
+    <h1 class="text-center text-xl">{{ collection.title }}</h1>
+
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+
+        {% for product in collection.products %}
+          {% render 'product-card' | product_product: product %}
+        {% else %}
+          <p>there is no collection</p>
+        {% endfor %}
+      </div>
+    </div>
+    <div>
+      {% render 'pagination' | pagination: paginate %}
+    </div>
+  {% endpaginate %}
+</div>
+
+{% schema %}
+  {
+    "name": "collection",
+    "settings": [
+      {
+        "type": "number",
+        "id": "number_of_pagination_per_page",
+        "label": "Number of Pagination per page",
+        "default": 6
+      }
+    ]
+  }
+{% endschema %}
