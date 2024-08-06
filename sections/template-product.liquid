@@ -79,7 +79,7 @@
                 <span class="text-3xl text-gray-900">{{ product.title }}</span>
               </div>
             {% when 'price' %}
-              <div class="my-3">
+              <div class="my-3" id="price-{{ section.id }}">
                 <span class="text-base text-gray-500 line-through">{{ selected_variant.compare_at_price | money }}</span>
                 <span class="text-lg text-gray-900 ">{{ selected_variant.price | money }}</span>
                 {% if selected_variant.price < selected_variant.compare_at_price %}
@@ -164,68 +164,81 @@
 
 
   <script>
-    class VariantSelector extends HTMLElement {
-      constructor(){
-        super();
-        this.addEventListener('change',this.onVariantChange)
-      }
-      onVariantChange(){
-       this.getSelectedOption();
-       this.getSelectedVariant();
-       if(this.currentVariant){
-        this.updateURL();
-        this.updateForm();
-       }
-      }
-      getSelectedOption(){
-          this.option = Array.from(this.querySelectorAll('select'), (select) => select.value);
-          console.log(this.option)
-      }
-      getVariantJSON(){
-        this.variantData = this.variantData ||JSON.parse(this.querySelector('[type="application/json"]').textContent);
-        return this.variantData
-      }
-      getSelectedVariant(){
-        this.currentVariant = this.getVariantJSON().find(
-          (variant) =>{
-            const finding = !variant.options.map(
-              (option , index) =>{
-                return this.option[index] == option;
-              }
-            ).includes(false);
-    
-            if(finding) return variant;
+        class VariantSelector extends HTMLElement {
+          constructor(){
+            super();
+            this.addEventListener('change',this.onVariantChange)
           }
-        ); 
-        console.log(this.currentVariant)
+          onVariantChange(){
+          this.getSelectedOption();
+          this.getSelectedVariant();
+          if(this.currentVariant){
+            this.updateURL();
+            this.updateForm();
+            this.updatePrice();
+          }
+          }
+          getSelectedOption(){
+              this.option = Array.from(this.querySelectorAll('select'), (select) => select.value);
+              console.log(this.option)
+          }
+          getVariantJSON(){
+            this.variantData = this.variantData ||JSON.parse(this.querySelector('[type="application/json"]').textContent);
+            return this.variantData
+          }
+          getSelectedVariant(){
+            this.currentVariant = this.getVariantJSON().find(
+              (variant) =>{
+                const finding = !variant.options.map(
+                  (option , index) =>{
+                    return this.option[index] == option;
+                  }
+                ).includes(false);
+        
+                if(finding) return variant;
+              }
+            ); 
+            console.log(this.currentVariant)
+          }
+        
+          updateURL() {
+                if(!this.currentVariant) return;
+                window.history.replaceState({}, '', `${this.dataset.url}?variant=${this.currentVariant.id}`);
+          }
+          updateForm(){
+            const form_input = document.querySelector('#product-form').querySelector('input[name="id"]');
+            form_input.value =this.currentVariant.id
+          }
+          updatePrice() {
+              fetch(`${this.dataset.url}?variant=${this.currentVariant.id}&section_id=${this.dataset.section}`)
+              .then((response) => response.text())
+              .then((responseText) => {
+                  const id = `price-${this.dataset.section}`;
+                  const html = new DOMParser().parseFromString(responseText, 'text/html');
+      
+                  const oldPrice = document.getElementById(id);
+                  const newPrice = html.getElementById(id);
+      
+                  if(oldPrice && newPrice) oldPrice.innerHTML = newPrice.innerHTML;
+              });
+          }
       }
-    
-      updateURL() {
-            if(!this.currentVariant) return;
-            window.history.replaceState({}, '', `${this.dataset.url}?variant=${this.currentVariant.id}`);
-        }
-      updateForm(){
-        const form_input = document.querySelector('#product-form').querySelector('input[name="id"]');
-        form_input.value =this.currentVariant.id
-      }
-    
-    }
-    
-    customElements.define('variant-selector', VariantSelector);
+        
+        customElements.define('variant-selector', VariantSelector);
   </script>
 
   <script>
-        const swiper = new Swiper('.swiper', {
-      direction: 'horizontal',
-      
-      pagination: {
-        el: '.swiper-pagination'
-      },
-      navigation: {
-        prevEl: '.swiper-button-prev',
-        nextEl: '.swiper-button-next'
-      }
-        })
+            const swiper = new Swiper('.swiper', {
+          direction: 'horizontal',
+          
+          pagination: {
+            el: '.swiper-pagination'
+          },
+          navigation: {
+            prevEl: '.swiper-button-prev',
+            nextEl: '.swiper-button-next'
+          }
+            })
   </script>
 
   {% schema %}
