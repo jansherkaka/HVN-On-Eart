@@ -4,11 +4,22 @@
     "featured-collection": {
       "type": "featured-collection",
       "settings": {
-        "featured-collection": "all"
+        "title": "Feature Collection",
+        "featured-collection": "all",
+        "range_of_products": 4
+      }
+    },
+    "featured_collection_QrgDWj": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "MakeupCollection",
+        "featured-collection": "makeup",
+        "range_of_products": 4
       }
     }
   },
   "order": [
-    "featured-collection"
+    "featured-collection",
+    "featured_collection_QrgDWj"
   ]
 }
