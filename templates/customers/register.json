@@ -1,7 +1,7 @@
 {
   "sections": {
     "template": {
-      "type": "template-register"
+      "type": "template-customer-register"
     }
   },
   "order": ["template"]
