@@ -24,10 +24,19 @@
         "featured-collection": "makeup",
         "range_of_products": 4
       }
+    },
+    "featured_collection_HJw4GJ": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Ladies Collection",
+        "featured-collection": "ladies-collection",
+        "range_of_products": 4
+      }
     }
   },
   "order": [
     "featured-collection",
-    "featured_collection_QrgDWj"
+    "featured_collection_QrgDWj",
+    "featured_collection_HJw4GJ"
   ]
 }
