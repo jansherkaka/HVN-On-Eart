@@ -5,9 +5,9 @@
       </h1>
     </div>
     <div class="mt-8">
-      {% form 'customer_login' %}
+      {% form 'create_customer' %}
         {% if form.errors %}
-          <div class=" relative border-red-400 bg-red-100 text-red-700 px-4 py-3">
+          <div class=" relative border-red-400 bg-red-100 text-red-700 px-4 py-3" role="alert">
             <strong class="font-bold">Error!</strong>
             <p class="block sm:inline">{{ form.errors | default_errors }}</p>
           </div>
@@ -46,11 +46,11 @@
             type="password"
             name="customer[password]"
             class="relative w-full block px-3 py-2 border"
-            autocomplete="current-password"
+            autocomplete="new-password"
             placeholder="Password">
         </div>
         <div>
-          <button class=" relative w-full py-2 text-sm font-medium text-white bg-gray-600 hover:bg-gray-900" type="submit">Sign in</button>
+          <button class=" relative w-full py-2 text-sm font-medium text-white bg-gray-600 hover:bg-gray-900" type="submit">Create Account</button>
         </div>
       {% endform %}
     </div>
