@@ -158,7 +158,23 @@
       class="top-0 right-0 mt-5 mr-5 absolute text-gray-700">
       {% render 'icon-close' %}
     </button>
-    <div class="h-40 flex justify-center items-center"></div>
+    <div class="h-40 flex justify-center items-center">
+      <form
+        action="{{ routes.search_url }}"
+        method="post"
+        class="flex-auto">
+        <div class=" relative border rounded-full px-10 mx-3 text-gray-500">
+          <input
+            type="search"
+            name="q"
+            placeholder="Search"
+            class="w-full h-10 px-5 pr-10 rounded-full text-base focus:outline-none ">
+          <button type="submit" class=" absolute top-0 right-0 mt-2 mr-2 ">
+            {% render 'icon-search' %}
+          </button>
+        </div>
+      </form>
+    </div>
   </div>
 
 </div>
