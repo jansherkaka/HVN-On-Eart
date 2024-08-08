@@ -1,7 +1,7 @@
 {
   "sections": {
     "template": {
-      "type": "template-order"
+      "type": "template-active-account"
     }
   },
   "order": ["template"]
