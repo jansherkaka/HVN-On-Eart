@@ -1,11 +1,36 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
 {
   "sections": {
     "template": {
-      "type": "template-product"
+      "type": "template-product",
+      "settings": {
+      }
+    },
+    "featured_collection_gVeEyz": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Featured Product",
+        "featured-collection": "organic-premium-flavors",
+        "range_of_products": 3
+      }
     },
     "footer": {
-      "type": "footer"
+      "type": "footer",
+      "settings": {
+      }
     }
   },
-  "order": ["template", "footer"]
+  "order": [
+    "template",
+    "featured_collection_gVeEyz",
+    "footer"
+  ]
 }
