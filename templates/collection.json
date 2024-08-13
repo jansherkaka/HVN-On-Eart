@@ -1,4 +1,3 @@
-
 {
   "sections": {
     "template": {
@@ -6,9 +5,10 @@
       "settings": {
         "number_of_pagination_per_page": 8
       }
+    },
+    "footer": {
+      "type": "footer"
     }
   },
-  "order": [
-    "template"
-  ]
+  "order": ["template", "footer"]
 }

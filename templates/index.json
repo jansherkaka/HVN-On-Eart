@@ -1,34 +1,40 @@
-
 {
   "sections": {
+    "hero-section": {
+      "type": "hero-section"
+    },
+
+    "heavenly-offered-section": {
+      "type": "heavenly-offered-section"
+    },
+
     "featured-collection": {
       "type": "featured-collection",
       "settings": {
-        "title": "Feature Collection",
+        "title": "Organic & Premium Flavors",
         "featured-collection": "all",
-        "range_of_products": 4
+        "range_of_products": 3
       }
     },
-    "featured_collection_QrgDWj": {
-      "type": "featured-collection",
-      "settings": {
-        "title": "Watches Collection",
-        "featured-collection": "makeup",
-        "range_of_products": 4
-      }
+
+    "community-section": {
+      "type": "community-section"
     },
-    "featured_collection_HJw4GJ": {
-      "type": "featured-collection",
-      "settings": {
-        "title": "Ladies Collection",
-        "featured-collection": "ladies-collection",
-        "range_of_products": 4
-      }
+
+    "partner-section": {
+      "type": "partner-section"
+    },
+
+    "footer": {
+      "type": "footer"
     }
   },
   "order": [
+    "hero-section",
+    "heavenly-offered-section",
     "featured-collection",
-    "featured_collection_QrgDWj",
-    "featured_collection_HJw4GJ"
+    "community-section",
+    "partner-section",
+    "footer"
   ]
 }

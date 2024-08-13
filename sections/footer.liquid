@@ -1,0 +1,44 @@
+<div class=" bg-backgroudColor py-20 px-32 text-white font-syne">
+  <div class=" grid md:grid-cols-4 grid-cols-2 ">
+    <div>
+      <div>
+        <h1 class="text-5xl text-white font-instrument font-medium uppercase">{{ shop.name }}</h1>
+      </div>
+      <div class="flex gap-6 my-6">
+        {% render 'icon-fb' %}
+        {% render 'icon-ig' %}
+      </div>
+    </div>
+    <div>
+      <h1 class="text-2xl font-semibold mb-4">Quick Links</h1>
+      <ul class=" space-y-5 text-base">
+        <li>Home</li>
+        <li>About</li>
+        <li>Podcast</li>
+        <li>Marketplace</li>
+      </ul>
+    </div>
+    <div>
+      <h1 class="text-2xl font-semibold mb-4">Support</h1>
+      <ul class=" space-y-5 text-base">
+        <li>Contact Us</li>
+        <li>Terms & Condition</li>
+        <li>Privay policy</li>
+      </ul>
+    </div>
+    <div>
+      <h1 class="text-2xl font-semibold mb-4">Our Newsletter</h1>
+      <p class="text-base">Join our newsletter for HVN ON ERTH news, recipes and opportunities!</p>
+      <div class=" bg-buttonColor flex rounded-full my-4">
+        <input
+          class="w-full rounded-full px-3 bg-buttonColor py-5 "
+          type="email"
+          placeholder="Email Address">
+        <button type="button" class=" my-3 mx-3 px-4 rounded-full bg-backgroudColor">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <p class="text-center text-base py-4">2024 by HVN ON ERTH.</p>
+</div>

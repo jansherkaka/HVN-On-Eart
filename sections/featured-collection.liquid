@@ -1,20 +1,18 @@
-<div class="py-8">
-  <h1 class="text-center text-xl">{{ section.settings.title }}</h1>
+<div class=" container mx-auto py-28">
+    <h1 class="text-center font-instrument text-5xl">{{ section.settings.title }}</h1>
 
-  <div class="max-w-6xl mx-auto">
-    <div class="w-full grid grid-cols-1 md:grid-cols-4 ">
+    <div class="w-full grid grid-cols-1 md:grid-cols-3 ">
       {% for product in section.settings.featured-collection.products limit :section.settings.range_of_products %}
         {% render 'product-card'
           , product_product: product %}
           {% else %}
-          {% for item in (1..4) %}
-            {% render 'product-card-placeholder',  %}
-          {% endfor %}
       {% endfor %}
     </div>
-  </div>
-
-</div>
+    <div class="text-center my-8">
+      <a class="rounded-full px-8 py-3 text-white text-base font-bold hover:bg-custom bg-backgroudColor" href="{{ routes.all_products_collection_url }}">View All Products</a>
+    </div>
+    </div>
+    
 
 {% schema %}
   {
@@ -23,7 +21,7 @@
       {
         "type": "text",
         "id": "title",
-        "default": "Feature Collection",
+        "default": "Organic & Premium Flavors",
         "label": "Title"
       }, 
       {
@@ -34,9 +32,9 @@
       {
         "type": "range",
         "id": "range_of_products",
-        "min": 4,
+        "min": 3,
         "max": 12,
-        "default": 4,
+        "default": 3,
         "label": "Number Of Products"
       }
     ],

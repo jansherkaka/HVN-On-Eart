@@ -3,9 +3,9 @@
     "template": {
       "type": "contact-us-page"
     },
-    "contact-form": {
-      "type": "contact-form"
+    "footer": {
+      "type": "footer"
     }
   },
-  "order": ["template", "contact-form"]
+  "order": ["template", "footer"]
 }

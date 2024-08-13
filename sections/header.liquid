@@ -1,24 +1,24 @@
 <div
-  class="relative bg-white"
-  x-data="{ mobileMenuOpen: false, searchBarOpen: false }"
+  class="relative"
+  x-data="{ 'mobileMenuOpen: false' }"
   x-cloak>
-  <div class="mx-auto px-4 sm:px-6">
-    <div class="flex justify-between items-center py-6 md:justify-start md:space-x-10">
+  <div class=" container mx-auto ">
+    <div class="flex  md:space-x-12 lg:space-x-16 justify-center items-center py-6 ">
       <!-- STORE NAME / STORE LOGO -->
-      <div class="flex justify-start lg:flex-1 truncate">
-        <h1 class="text-xl font-bold truncate">{{ shop.name }}</h1>
+      <div>
+        <h1 class="text-5xl font-instrument font-medium uppercase">{{ shop.name }}</h1>
       </div>
       <!-- on Mobile Screen Menu Icon -->
       <div class="-mr-2 -my-2 ml-3 md:hidden">
         <button
           x-on:click="mobileMenuOpen = true"
           type="button"
-          class="bg-white p-2 inline-flex items-center justify-center focus:outline-none">
+          class=" p-2 inline-flex items-center justify-center focus:outline-none">
           {% render 'icon-menu' %}
         </button>
       </div>
       <!-- NAVIGATION MENU -->
-      <nav class="hidden md:flex space-x-10">
+      <nav class="hidden md:flex space-x-14">
         {% if section.settings.menu.links == blank %}
           {% assign main_menu_linklist = linklists[section.settings.menu].links %}
         {% else %}
@@ -66,29 +66,14 @@
           {% endif %}
         {% endfor %}
       </nav>
-      <!-- CART BUTTON / ACCOUNT LINKS IF ENABLED -->
-      <div class="hidden md:flex items-center justify-end md:flex-1 space-x-5">
-        <button
-          x-on:click="searchBarOpen = true"
-          type="button"
-          class="whitespace-nowrap text-base text-gray-500 hover:text-gray-900">
-          {% render 'icon-search' %}
-        </button>
-        <a href="{{ routes.cart_url }}" class="whitespace-nowrap text-base text-gray-500 hover:text-gray-900">
+
+
+      <div class="hidden md:flex items-center space-x-8">
+        <button class="rounded-lg py-4 px-6 text-lg font-medium" style="border: 1px black solid;;">Partner With Us</button>
+        <a href="{{ routes.cart_url }}" class="whitespace-nowrap text-base text-white bg-black rounded-full p-3">
           {% render 'icon-shopping-bag' %}
         </a>
-
-        {% if shop.customer_accounts_enabled %}
-          {% if customer %}
-            <a href="{{ routes.account_url }}" class="text-base text-gray-500 hover:text-gray-900">account</a>
-            {{ 'Log out' | customer_logout_link | replace: '<a', '<a class="text-base text-gray-500 hover:text-gray-900"' }}
-          {% else %}
-            {{ 'Log in ' | customer_login_link | replace: '<a', '<a class="text-base text-gray-500 hover:text-gray-900"' }}
-            {{ 'Register' | customer_register_link | replace: '<a', '<a class="text-base text-gray-500 hover:text-gray-900"' }}
-          {% endif %}
-        {% endif %}
       </div>
-
       <!-- MOBILE MENU CONTAINER -->
       <div x-show="mobileMenuOpen" class="absolute z-10 top-0 inset-x-0 p-2 transform origin-top-left md:hidden">
         <div class="shadow-lg rounded-lg ring-1 ring-black ring-opacity-5 bg-white w-full">
@@ -147,64 +132,14 @@
 
                 {% endfor %}
               </nav>
-
-
             </div>
           </div>
         </div>
       </div>
     </div>
 
-
-    <div class=" md:hidden flex items-center justify-between  space-x-5">
-      <button
-        x-on:click="searchBarOpen = true"
-        type="button"
-        class="whitespace-nowrap text-base text-gray-500 hover:text-gray-900">
-        {% render 'icon-search' %}
-      </button>
-      <a href="{{ routes.cart_url }}" class="whitespace-nowrap text-base text-gray-500 hover:text-gray-900">
-        {% render 'icon-shopping-bag' %}
-      </a>
-
-      {% if shop.customer_accounts_enabled %}
-        {% if customer %}
-          <a href="{{ routes.account_url }}" class="text-base text-gray-500 hover:text-gray-900">account</a>
-          {{ 'Log out' | customer_logout_link | replace: '<a', '<a class="text-base text-gray-500 hover:text-gray-900"' }}
-        {% else %}
-          {{ 'Log in ' | customer_login_link | replace: '<a', '<a class="text-base text-gray-500 hover:text-gray-900"' }}
-          {{ 'Register' | customer_register_link | replace: '<a', '<a class="text-base text-gray-500 hover:text-gray-900"' }}
-        {% endif %}
-      {% endif %}
-    </div>
-
   </div>
 
-  <div x-show="searchBarOpen" class="top-0 absolute bg-white border w-full">
-    <button
-      type="button"
-      x-on:click="searchBarOpen = false"
-      class="top-0 right-0 mt-5 mr-5 absolute text-gray-700">
-      {% render 'icon-close' %}
-    </button>
-    <div class="h-40 flex justify-center items-center">
-      <form
-        action="{{ routes.search_url }}"
-        method="post"
-        class="flex-auto">
-        <div class=" relative border rounded-full px-10 mx-3 text-gray-500">
-          <input
-            type="search"
-            name="q"
-            placeholder="Search"
-            class="w-full h-10 px-5 pr-10 rounded-full text-base focus:outline-none ">
-          <button type="submit" class=" absolute top-0 right-0 mt-2 mr-2 ">
-            {% render 'icon-search' %}
-          </button>
-        </div>
-      </form>
-    </div>
-  </div>
 
 </div>
 

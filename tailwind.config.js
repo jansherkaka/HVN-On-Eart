@@ -9,7 +9,15 @@ module.exports = {
   ],
   theme: {
     extend: {
-      
+      fontFamily: {
+        instrument: ["Instrument Serif", "serif"],
+        syne: ["Syne", "sans-serif"],
+      },
+      colors: {
+        custom: "#5C584F",
+        backgroudColor: "#B8AF9E",
+        buttonColor: "#E6E1D8",
+      },
     },
   },
   plugins: [],
