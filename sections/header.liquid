@@ -82,8 +82,13 @@
             {{ 'Partner With Us ' | customer_login_link | replace: '<a', '<a class="rounded-lg hover:bg-backgroudColor py-4 px-6 text-lg font-medium" style="border: 1px black solid;"' }}
           {% endif %}
         {% endif %}
-        <a href="{{ routes.cart_url }}" class="whitespace-nowrap text-base text-white bg-black rounded-full p-3">
+        <a href="{{ routes.cart_url }}" class="whitespace-nowrap relative text-base text-white bg-black rounded-full p-3">
           {% render 'icon-shopping-bag' %}
+          {% if cart.item_count > 0 %}
+            <span class="absolute top-0 right-0 inline-block w-5 h-5 bg-red-600 text-white text-center rounded-full text-xs leading-tight">
+              {{ cart.item_count }}
+            </span>
+          {% endif %}
         </a>
       </div>
       <!-- MOBILE MENU CONTAINER -->
