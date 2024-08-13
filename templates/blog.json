@@ -2,7 +2,10 @@
   "sections": {
     "template": {
       "type": "podcast"
+    },
+    "footer": {
+      "type": "footer"
     }
   },
-  "order": ["template"]
+  "order": ["template", "footer"]
 }
