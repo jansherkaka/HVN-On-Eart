@@ -19,23 +19,22 @@
         <h1 class=" text-2xl font-syne">
           {{ product_product.title }}</h1>
       </a>
-      <p class=" font-syne text-base">{{ product_product.content | strip_html | truncatewords: 20 }}</p>
-      <div class="flex gap-4">
-        <div
-          class="py-1 hover:bg-backgroudColor hover:text-white cursor-pointer text-sm px-4 rounded-full"
+      <p class=" h-20 font-syne text-base">{{ product_product.content | strip_html | truncatewords: 20 }}</p>
+      <div class="flex gap-4 ">
+        <span
+          class="py-1 hover:text-black font-medium text-backgroudColor cursor-pointer text-sm px-4 rounded-full"
           style="border: 1px solid #B8AF9E;"
-          onmouseover="this.style.borderColor='#B8AF9E'"
-          onmouseout="this.style.borderColor='#B8AF9E'">Ideal for</div>
-        <div
-          class="py-1 hover:bg-backgroudColor hover:text-white  cursor-pointer text-sm px-4 rounded-full"
-          style="border: 1px solid #B8AF9E;"
-          onmouseover="this.style.borderColor='#B8AF9E'"
-          onmouseout="this.style.borderColor='#B8AF9E'">Tacos</div>
-        <div
-          class="py-1 hover:bg-backgroudColor hover:text-white cursor-pointer text-sm px-4 rounded-full"
-          style="border: 1px solid #B8AF9E;"
-          onmouseover="this.style.borderColor='#B8AF9E'"
-          onmouseout="this.style.borderColor='#B8AF9E'">Pasta</div>
+          onmouseover="this.style.borderColor='#000'"
+          onmouseout="this.style.borderColor='#B8AF9E'">Ideal for</span>
+        {% assign badges = product_product.tags %}
+        {% for badge in badges limit: 2 %}
+          <span
+            class="py-1 hover:text-black font-medium text-backgroudColor cursor-pointer text-sm px-4 rounded-full"
+            style="border: 1px solid #B8AF9E;"
+            onmouseover="this.style.borderColor='#000'"
+            onmouseout="this.style.borderColor='#B8AF9E'">{{ badge }}</span>
+        {% endfor %}
+
       </div>
     </div>
 

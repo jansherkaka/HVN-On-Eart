@@ -3,10 +3,12 @@
   x-data="{ 'mobileMenuOpen: false' }"
   x-cloak>
   <div class=" container mx-auto ">
-    <div class="flex  md:space-x-12 lg:space-x-16 justify-center items-center py-6 ">
+    <div class="flex  md:space-x-12 text-[#2E2C28] lg:space-x-16 justify-center items-center py-6 ">
       <!-- STORE NAME / STORE LOGO -->
       <div>
-        <h1 class="text-5xl font-instrument font-medium uppercase">{{ shop.name }}</h1>
+        <a href="{{ shop.url }}">
+          <h1 class="text-5xl font-instrument font-medium uppercase">{{ shop.name }}</h1>
+        </a>
       </div>
       <!-- on Mobile Screen Menu Icon -->
       <div class="-mr-2 -my-2 ml-3 md:hidden">

@@ -3,9 +3,12 @@
     "template": {
       "type": "template-product"
     },
+    "featured-collection": {
+      "type": "featured-collection"
+    },
     "footer": {
       "type": "footer"
     }
   },
-  "order": ["template", "footer"]
+  "order": ["template", "featured-collection", "footer"]
 }

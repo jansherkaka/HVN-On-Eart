@@ -3,6 +3,22 @@
     Maketplace
   </h1>
 </div>
+<div class="py-40 shadow-sm">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
+      <div>
+        <img src="{{ 'offer.svg'| asset_url }}" alt="">
+      </div>
+      <div>
+        <h1 class="text-6xl font-medium text-custom font-instrument tracking-wide mb-4">Our Offerings
+        </h1>
+        <p class="text-lg font-syne mb-5">Your gateway to a world of plant based and premium offerings. Elevate your everyday with delectable, sustainable choices for your fridge and beyond.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="py-8">
   <div class="max-w-6xl mx-auto">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -28,31 +44,30 @@
                 <h1 class=" text-2xl font-syne">
                   {{ product.title }}</h1>
               </a>
-              <p class=" h-24 font-syne text-base">{{ product.content | strip_html | truncatewords: 20 }}</p>
+              <p class=" h-20 font-syne text-base">{{ product.content | strip_html | truncatewords: 20 }}</p>
               <div class="flex gap-4">
-                <div
-                  class="py-1 hover:bg-backgroudColor hover:text-white cursor-pointer text-sm px-4 rounded-full"
+                <span
+                  class="py-1 hover:text-black font-medium text-backgroudColor cursor-pointer text-sm px-4 rounded-full"
                   style="border: 1px solid #B8AF9E;"
-                  onmouseover="this.style.borderColor='#B8AF9E'"
-                  onmouseout="this.style.borderColor='#B8AF9E'">Ideal for</div>
-                <div
-                  class="py-1 hover:bg-backgroudColor hover:text-white  cursor-pointer text-sm px-4 rounded-full"
-                  style="border: 1px solid #B8AF9E;"
-                  onmouseover="this.style.borderColor='#B8AF9E'"
-                  onmouseout="this.style.borderColor='#B8AF9E'">Tacos</div>
-                <div
-                  class="py-1 hover:bg-backgroudColor hover:text-white cursor-pointer text-sm px-4 rounded-full"
-                  style="border: 1px solid #B8AF9E;"
-                  onmouseover="this.style.borderColor='#B8AF9E'"
-                  onmouseout="this.style.borderColor='#B8AF9E'">Pasta</div>
+                  onmouseover="this.style.borderColor='#000'"
+                  onmouseout="this.style.borderColor='#B8AF9E'">Ideal for</span>
+                {% assign badges = product.tags %}
+                {% for badge in badges %}
+                  <span
+                    class="py-1 hover:text-black font-medium text-backgroudColor cursor-pointer text-sm px-4 rounded-full"
+                    style="border: 1px solid #B8AF9E;"
+                    onmouseover="this.style.borderColor='#000'"
+                    onmouseout="this.style.borderColor='#B8AF9E'">{{ badge }}</span>
+                {% endfor %}
+
               </div>
 
               <a
                 href="{{ product.url }}"
-                class=" my-4 hover:bg-backgroudColor hover:text-white text-center py-3 rounded-2xl"
+                class=" my-4 hover:bg-backgroudColor text-custom font-medium hover:text-white text-center py-3 rounded-2xl"
                 style="border: 1px solid #B8AF9E;"
                 onmouseover="this.style.borderColor='#B8AF9E'"
-                onmouseout="this.style.borderColor='#000'">
+                onmouseout="this.style.borderColor='#B8AF9E'">
                 Buy Now
               </a>
 

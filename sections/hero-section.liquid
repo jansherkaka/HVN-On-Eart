@@ -9,15 +9,14 @@
         <button class=" hover:bg-buttonColor py-5 px-7 rounded-xl text-xl font-syne font-semibold my-5 text-custom">Watch Video</button>
       </div>
     </div>
-    <div class="">
-
-      <iframe
-        class="w-full h-full"
-        src="{{ 'video.mp4' | asset_url }}"
-        type="video/mp4"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen></iframe>
+    <div class="relative">
+      <video
+        autoplay
+        loop
+        muted
+        class="absolute inset-0 w-full h-full object-cover">
+        <source src="{{ 'video.mp4' | asset_url }}" type="video/mp4">
+      </video>
     </div>
   </div>
 </div>
