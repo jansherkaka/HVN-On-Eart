@@ -864,10 +864,6 @@ video {
   height: 5rem;
 }
 
-.h-24 {
-  height: 6rem;
-}
-
 .h-60 {
   height: 15rem;
 }
@@ -892,14 +888,6 @@ video {
   height: 100vh;
 }
 
-.h-2 {
-  height: 0.5rem;
-}
-
-.h-16 {
-  height: 4rem;
-}
-
 .min-h-80 {
   min-height: 20rem;
 }
@@ -920,6 +908,10 @@ video {
   width: 75%;
 }
 
+.w-40 {
+  width: 10rem;
+}
+
 .w-full {
   width: 100%;
 }
@@ -933,14 +925,6 @@ video {
   width: 100vw;
 }
 
-.w-40 {
-  width: 10rem;
-}
-
-.w-0 {
-  width: 0px;
-}
-
 .max-w-2xl {
   max-width: 42rem;
 }
@@ -949,16 +933,12 @@ video {
   max-width: 72rem;
 }
 
-.max-w-md {
-  max-width: 28rem;
-}
-
-.max-w-7 {
-  max-width: 1.75rem;
-}
-
 .max-w-7xl {
   max-width: 80rem;
+}
+
+.max-w-md {
+  max-width: 28rem;
 }
 
 .flex-1 {
@@ -1438,6 +1418,11 @@ video {
   padding-bottom: 1rem;
 }
 
+.py-40 {
+  padding-top: 10rem;
+  padding-bottom: 10rem;
+}
+
 .py-5 {
   padding-top: 1.25rem;
   padding-bottom: 1.25rem;
@@ -1463,11 +1448,6 @@ video {
   padding-bottom: 2rem;
 }
 
-.py-40 {
-  padding-top: 10rem;
-  padding-bottom: 10rem;
-}
-
 .pb-3 {
   padding-bottom: 0.75rem;
 }
@@ -1482,14 +1462,6 @@ video {
 
 .pt-3 {
   padding-top: 0.75rem;
-}
-
-.ps-2 {
-  padding-inline-start: 0.5rem;
-}
-
-.ps-4 {
-  padding-inline-start: 1rem;
 }
 
 .text-left {
@@ -1593,6 +1565,11 @@ video {
   letter-spacing: 0.025em;
 }
 
+.text-\[\#2E2C28\] {
+  --tw-text-opacity: 1;
+  color: rgb(46 44 40 / var(--tw-text-opacity));
+}
+
 .text-backgroudColor {
   --tw-text-opacity: 1;
   color: rgb(184 175 158 / var(--tw-text-opacity));
@@ -1653,11 +1630,6 @@ video {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-.text-\[\#2E2C28\] {
-  --tw-text-opacity: 1;
-  color: rgb(46 44 40 / var(--tw-text-opacity));
-}
-
 .underline {
   text-decoration-line: underline;
 }
@@ -1683,24 +1655,6 @@ video {
 .shadow-lg {
   --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
-
-.shadow {
-  --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-  --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
-
-.shadow-xl {
-  --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-  --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
-
-.shadow-md {
-  --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
@@ -1808,19 +1762,6 @@ video {
 .hover\:bg-green-800:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(22 101 52 / var(--tw-bg-opacity));
-}
-
-.hover\:text-base:hover {
-  font-size: 1rem;
-  line-height: 1.5rem;
-}
-
-.hover\:font-medium:hover {
-  font-weight: 500;
-}
-
-.hover\:font-normal:hover {
-  font-weight: 400;
 }
 
 .hover\:text-black:hover {

@@ -10,9 +10,9 @@
   </div>
   <div>
     {% for line_item in order.line_items %}
-      <div class="w-full border border-gray-200 divide-y rounded-sm mb-4">
+      <div class="w-full divide-y rounded-sm mb-4" style="border: 1px solid #B8AF9E;">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-12 p-4 md:p-12">
-          <div class="w-full h-80 min-h-80 bg-gray-200 rounded-md overflow-hidden border">
+          <div class="w-full h-80 min-h-80 bg-gray-200 rounded-md overflow-hidden border" style="border: 1px solid #B8AF9E;">
             {% if line_item.image %}
               <img
                 class="w-full h-full object-cover object-center"
@@ -27,16 +27,16 @@
             <table class="table-auto w-full mb-4">
               <tbody>
                 <tr>
-                  <td class="border border-gray-200 px-4 py-2">Price</td>
-                  <td class="border border-gray-200 px-4 py-2">{{ line_item.original_price | money }}</td>
+                  <td class=" px-4 py-2" style="border: 1px solid #B8AF9E;">Price</td>
+                  <td class=" px-4 py-2" style="border: 1px solid #B8AF9E;">{{ line_item.original_price | money }}</td>
                 </tr>
                 <tr>
-                  <td class="border border-gray-200 px-4 py-2">Quantity</td>
-                  <td class="border border-gray-200 px-4 py-2">{{ line_item.quantity }}</td>
+                  <td class=" px-4 py-2" style="border: 1px solid #B8AF9E;">Quantity</td>
+                  <td class=" px-4 py-2" style="border: 1px solid #B8AF9E;">{{ line_item.quantity }}</td>
                 </tr>
                 <tr>
-                  <td class="border border-gray-200 px-4 py-2">Final price</td>
-                  <td class="border border-gray-200 px-4 py-2">{{ line_item.final_line_price | money }}</td>
+                  <td class=" px-4 py-2" style="border: 1px solid #B8AF9E;">Final price</td>
+                  <td class=" px-4 py-2" style="border: 1px solid #B8AF9E;">{{ line_item.final_line_price | money }}</td>
                 </tr>
               </tbody>
             </table>
@@ -58,7 +58,7 @@
             </div>
           </div>
         </div>
-        <div class="p-4 md:p-12">
+        <div class="p-4 md:p-12" style="border: 1px solid #B8AF9E;">
           <h1 class="text-lg font-medium mb-4">Fulfillment</h1>
           {% if line_item.successfully_fulfilled_quantity > 0 %}
             <p class="mb-2">We have fulfilled {{ line_item.successfully_fulfilled_quantity }} items of your recent order</p>
@@ -76,7 +76,7 @@
         </div>
       </div>
     {% endfor %}
-    <div class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-12 border border-gray-200 rounded-sm p-4 md:p-12 my-6 bg-gray-50">
+    <div class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-12 rounded-sm p-4 md:p-12 my-6 " style="border: 1px solid #B8AF9E;">
       <div>
         <h1 class="font-medium mb-4">Billing address</h1>
 
@@ -112,16 +112,16 @@
         <table class="table-auto w-full mb-4">
           <tbody>
             <tr>
-              <td class="border border-gray-200 px-4 py-2">Subtotal</td>
-              <td class="border border-gray-200 px-4 py-2">{{ order.subtotal_price | money }}</td>
+              <td class=" px-4 py-2" style="border: 1px solid #B8AF9E;">Subtotal</td>
+              <td class=" px-4 py-2" style="border: 1px solid #B8AF9E;">{{ order.subtotal_price | money }}</td>
             </tr>
             <tr>
-              <td class="border border-gray-200 px-4 py-2">Shipping</td>
-              <td class="border border-gray-200 px-4 py-2">{{ order.shipping_price | money }}</td>
+              <td class=" px-4 py-2" style="border: 1px solid #B8AF9E;">Shipping</td>
+              <td class=" px-4 py-2" style="border: 1px solid #B8AF9E;">{{ order.shipping_price | money }}</td>
             </tr>
             <tr>
-              <td class="border border-gray-200 px-4 py-2">Total</td>
-              <td class="border border-gray-200 px-4 py-2">{{ order.total_price | money }}</td>
+              <td class=" px-4 py-2" style="border: 1px solid #B8AF9E;">Total</td>
+              <td class=" px-4 py-2" style="border: 1px solid #B8AF9E;">{{ order.total_price | money }}</td>
             </tr>
           </tbody>
         </table>
