@@ -40,7 +40,7 @@
     </div>
   </div>
   <div class="grid grid-cols-1 md:grid-cols-2 gap-8 px-4 my-7">
-    <div>
+    <div data-aos="fade-right">
       <img
         class="w-full"
         src="{{ 'episode1.png'| asset_url }}"
@@ -62,3 +62,8 @@
     </div>
   </div>
 </div>
+
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+      AOS.init();
+</script>
